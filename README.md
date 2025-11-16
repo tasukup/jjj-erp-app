@@ -125,78 +125,33 @@ backend ディレクトリは 当社のDB（コード） を扱う領域です�
 
 📘 今後の ERP モジュール計画（ロードマップ）
 フェーズ1（MVP）
-
-
 ユーザー認証（JWT）
-
-
 企業管理（Firm / Client）
-
-
 勘定科目マスター
-
-
 仕訳入力（JournalEntry）
-
-
 AI 仕訳候補（CandidateEntry）
-
-
 仕訳確定ワークフロー
 
-
 フェーズ2（商用版）
-
-
 Document AI 連携
-
-
 Google Drive 自動取り込み
-
-
 銀行API連携
-
-
 電子帳簿保存法 対応
-
-
 請求書管理
-
-
 売上・仕入管理
 
-
 フェーズ3（高度化）
-
-
 BigQuery連携
-
-
 経営ダッシュボード（Looker Studio）
-
-
 グローバル展開向けローカライズ
-
-
 
 👥 開発ルール（複数人開発向け）
 ブランチルール
-
-
 main：本番に近い安定版
-
-
 dev：開発統合ブランチ
-
-
 feature/*：機能追加
-
-
 fix/*：バグ修正
-
-
 hotfix/*：緊急修正
-
 
 コミットメッセージ（Conventional Commits）
 feat: 新機能
@@ -227,5 +182,3 @@ style: コード整形
 - CODE_OF_CONDUCT.md（チーム制作用）
 
 ---
-
-必要であれば **GitHub にコピペした後に最終チェック** も行います。
