@@ -1,0 +1,10 @@
+//環境ファイル
+.env
+
+//コンパイル済み出力
+dist/
+node_modules
+
+//os・エディタ系
+.DS_Store
+.vscode/
