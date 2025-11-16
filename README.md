@@ -73,7 +73,6 @@ jjj-erp-app/
 ├── docs/
 └── infra/
 
-
 ---
 
 # 🛠 環境構築手順（新メンバー向け）
@@ -85,11 +84,9 @@ git clone https://github.com/tasukup/jjj-erp-app.git
 cd jjj-erp-app/backend
 
 2. 依存パッケージインストール
-
 npm install
 
 3. .env の作成
-
 PORT=3000
 DB_HOST=127.0.0.1
 DB_USER=erpuser
@@ -101,25 +98,14 @@ JWT_SECRET=supersecretkey
 JWT_EXPIRES_IN=1h
 
 4. 開発サーバ起動
-
 npm run dev
 
 🗄 当社のDB（backend）について
 backend ディレクトリは 当社のDB（コード） を扱う領域です。
-
-
 当社スタッフ・販売代理店の管理（platform_users）
-
-
 クライアント企業管理（firm / client）
-
-
 クライアントの環境情報
-
-
 契約プラン / モジュール選択
-
-
 を保持します。
 クライアント側の会計データは clientDB（後に別環境で構築）に保存します。
 
