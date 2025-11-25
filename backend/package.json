@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node -r dotenv/config src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
-  },
+    "start": "node dist/server.js",
+	"knex": "knex --knexfile knexfile.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,16 +18,16 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "knex": "^3.1.0",
-    "pg": "^8.16.3",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "@types/express": "^5.0.2",
     "@types/cors": "^2.8.17",
-    "typescript": "^5.9.3",
+    "@types/express": "^5.0.2",
+    "@types/node": "^20.11.30",
+    "knex": "^3.1.0",
+    "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
-    "nodemon": "^3.1.10"
+    "typescript": "^5.9.3"
   }
 }
