@@ -1,0 +1,21 @@
+<div class="dashboard-wrapper">
+
+    <h2 class="section-title">ダッシュボード</h2>
+
+    <app-time-clock></app-time-clock>
+
+    <!-- 売上カード -->
+    <div class="card sales-card">
+      <p class="value">月間売上：¥{{ monthSales | number }}</p>
+      <p class="sub">今日：¥{{ todaySales | number }}</p>
+    </div>
+  
+    <!-- 入出金カード -->
+    <div class="card cash-card">
+      <p class="sub">入金：¥{{ cashIn | number }}</p>
+      <p class="sub">出金：¥{{ cashOut | number }}</p>
+      <p class="value">残高：¥{{ cashBalance | number }}</p>
+    </div>
+  
+  </div>
+  

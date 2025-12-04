@@ -1,0 +1,77 @@
+/* 和紙風の背景 */
+:host {
+    display: block;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1551509134-3d8d77a67864?auto=format&fit=crop&w=1600&q=80')
+                center/cover no-repeat fixed;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* ==== Header ==== */
+  .header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .header .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .header nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .header nav a:hover {
+    color: #d7263d;
+  }
+  
+  /* ==== Dashboard ==== */
+  .dashboard {
+    padding: 40px;
+  }
+  
+  .dashboard h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+  }
+  
+  /* ==== Cards ==== */
+  .cards {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    text-align: center;
+  }
+  
+  .card h2 {
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d7263d;
+  }

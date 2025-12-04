@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<!-- 和モダン ナビゲーション -->
+<nav class="navbar">
+    <div class="nav-left">
+      <span class="logo">和 ERP</span>
+    </div>
+  
+    <div class="nav-links">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/customers" routerLinkActive="active">Customers</a>
+      <a routerLink="/settings" routerLinkActive="active">Settings</a>
+    </div>
+  </nav>
+  
+  <!-- メイン表示エリア -->
+  <router-outlet></router-outlet>
+  

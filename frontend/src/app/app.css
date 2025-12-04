@@ -1,0 +1,43 @@
+/* 和モダンナビゲーション */
+.navbar {
+    background: #0D1B2A;      /* 紺 */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    align-items: center;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  
+  /* ナビ内リンク */
+  .nav-links a {
+    color: #E8E6E1;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.25s;
+  }
+  
+  /* 最後のリンク余白削除 */
+  .nav-links a:last-child {
+    margin-right: 0;
+  }
+  
+  /* ホバー時の色（朱色寄り） */
+  .nav-links a:hover {
+    color: #D1495B;
+  }
+  
+  /* 現在のページ（Active） */
+  .active {
+    border-bottom: 2px solid #D1495B;
+    padding-bottom: 2px;
+  }
+  

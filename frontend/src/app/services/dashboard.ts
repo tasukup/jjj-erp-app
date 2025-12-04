@@ -1,0 +1,15 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DashboardService {
+  private apiUrl = 'http://192.168.0.10:3000/api/dashboard';
+
+  constructor(private http: HttpClient) {}
+
+  getDashboard() {
+    return this.http.get(this.apiUrl);
+  }
+}
