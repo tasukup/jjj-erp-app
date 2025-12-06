@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./time-clock.css'],
 })
 export class TimeClockComponent implements OnDestroy {
-
   serverTime: string = '取得中…';
+  displayTime: string = '取得中…';
   private timer: any;
 
   constructor(
@@ -29,6 +29,7 @@ export class TimeClockComponent implements OnDestroy {
   updateTime() {
     this.timeService.getServerTime().subscribe((data) => {
       this.serverTime = data.now;
+      this.displayTime = this.formatTime(data.now);
       this.cdr.detectChanges();  // ★ Angular に画面更新を強制させる
     });
   }
@@ -37,5 +38,19 @@ export class TimeClockComponent implements OnDestroy {
     if (this.timer) {
       clearInterval(this.timer);  // ★ メモリリーク防止
     }
+  }
+
+  private formatTime(isoString: string): string {
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) {
+      return '取得中…';
+    }
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    return `${year}/${month}/${day}/${hours}/${minutes}`;
   }
 }

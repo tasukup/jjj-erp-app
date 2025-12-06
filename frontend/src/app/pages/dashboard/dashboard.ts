@@ -1,16 +1,16 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { DashboardService } from '../../services/dashboard';  // ← 追加
-import { TimeClockComponent } from '../../widgets/time-clock/time-clock'; // ← ★ これが必要！
+import { DashboardService } from '../../services/dashboard';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css'],
-  imports: [DecimalPipe,TimeClockComponent]
+  imports: [DecimalPipe],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnDestroy {
 
   todayJournal = 0;
   pendingJournal = 0;
@@ -21,31 +21,37 @@ export class DashboardComponent {
   cashOut = 0;
   cashBalance = 0;
 
-  constructor(
-    private dashboardService: DashboardService,
-    private cdr: ChangeDetectorRef,
-  ) {}  // サービス + 画面更新用
+  private refreshSub?: Subscription; // ★追加
+
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
+    // 初回読み込み
+    this.loadDashboard();
 
+    // ★ 60秒ごとに自動更新
+    this.refreshSub = interval(60000).subscribe(() => {
+      this.loadDashboard();
+    });
+  }
+
+  ngOnDestroy() {
+    // ★ コンポーネント破棄時にタイマー解除（メモリリーク防止）
+    this.refreshSub?.unsubscribe();
+  }
+
+  // 実際の API 呼び出し処理を関数にまとめる
+  private loadDashboard() {
     this.dashboardService.getDashboard()
       .subscribe((data: any) => {
-      console.log("📌 ダッシュボード受信データ:", data);  // ← 追加
-
-        // サーバーから値が欠けたり文字列で返ってきても数字で表示できるようにする
-        this.todayJournal = Number(data?.todayJournal ?? 0);
-        this.pendingJournal = Number(data?.pendingJournal ?? 0);
-        this.todaySales = Number(data?.todaySales ?? 0);
-        this.monthSales = Number(data?.monthSales ?? 0);
-        this.lastMonthRate = Number(data?.lastMonthRate ?? 0);
-        this.cashIn = Number(data?.cashIn ?? 0);
-        this.cashOut = Number(data?.cashOut ?? 0);
-        this.cashBalance = Number(data?.cashBalance ?? 0);
-
-        // まれに外部ゾーンで走る場合があるので明示的に検知させる
-        this.cdr.detectChanges();
-       
-         console.log("📌 todaySales:", this.todaySales);  // ← 追加
+        this.todayJournal = data.todayJournal ?? 0;
+        this.pendingJournal = data.pendingJournal ?? 0;
+        this.todaySales = data.todaySales ?? 0;
+        this.monthSales = data.monthSales ?? 0;
+        this.lastMonthRate = data.lastMonthRate ?? 0;
+        this.cashIn = data.cashIn ?? 0;
+        this.cashOut = data.cashOut ?? 0;
+        this.cashBalance = data.cashBalance ?? 0;
       });
   }
 }

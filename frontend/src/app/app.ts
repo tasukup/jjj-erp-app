@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { TimeClockComponent } from './widgets/time-clock/time-clock';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    TimeClockComponent,
   ],
 })
 export class AppComponent {}

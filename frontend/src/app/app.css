@@ -14,6 +14,17 @@
     font-weight: 600;
     letter-spacing: 2px;
   }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-clock {
+    display: inline-flex;
+    align-items: center;
+  }
   
   /* ナビ内リンク */
   .nav-links a {

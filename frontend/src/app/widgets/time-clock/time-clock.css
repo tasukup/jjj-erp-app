@@ -1,14 +1,17 @@
 .time-widget {
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #E8E6E1;
+  font-size: 13px; /* パンくず相当の小さめ文字 */
+  line-height: 1.2;
+}
+
+.time-label {
+  opacity: 0.8;
 }
 
 .time {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.5px;
 }
