@@ -1,13 +1,15 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
-import { Time } from './time';
+import { TimeService } from './time';
 
 describe('Time', () => {
-  let service: Time;
+  let service: TimeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Time);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
+    service = TestBed.inject(TimeService);
   });
 
   it('should be created', () => {

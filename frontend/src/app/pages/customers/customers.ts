@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-customers',
   standalone: true,
   templateUrl: './customers.html',
-  styleUrl: './customers.css',
+  styleUrls: ['./customers.css'],
 })
 export class CustomersComponent {
 

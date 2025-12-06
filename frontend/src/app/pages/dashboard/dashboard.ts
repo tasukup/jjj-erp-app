@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { DashboardService } from '../../services/dashboard';  // ← 追加
 import { TimeClockComponent } from '../../widgets/time-clock/time-clock'; // ← ★ これが必要！
@@ -21,22 +21,31 @@ export class DashboardComponent {
   cashOut = 0;
   cashBalance = 0;
 
-  constructor(private dashboardService: DashboardService) {}  // ← サービスに注入
+  constructor(
+    private dashboardService: DashboardService,
+    private cdr: ChangeDetectorRef,
+  ) {}  // サービス + 画面更新用
 
   ngOnInit() {
 
     this.dashboardService.getDashboard()
       .subscribe((data: any) => {
+      console.log("📌 ダッシュボード受信データ:", data);  // ← 追加
 
-        this.todayJournal = data.todayJournal;
-        this.pendingJournal = data.pendingJournal;
-        this.todaySales = data.todaySales;
-        this.monthSales = data.monthSales;
-        this.lastMonthRate = data.lastMonthRate;
-        this.cashIn = data.cashIn;
-        this.cashOut = data.cashOut;
-        this.cashBalance = data.cashBalance;
+        // サーバーから値が欠けたり文字列で返ってきても数字で表示できるようにする
+        this.todayJournal = Number(data?.todayJournal ?? 0);
+        this.pendingJournal = Number(data?.pendingJournal ?? 0);
+        this.todaySales = Number(data?.todaySales ?? 0);
+        this.monthSales = Number(data?.monthSales ?? 0);
+        this.lastMonthRate = Number(data?.lastMonthRate ?? 0);
+        this.cashIn = Number(data?.cashIn ?? 0);
+        this.cashOut = Number(data?.cashOut ?? 0);
+        this.cashBalance = Number(data?.cashBalance ?? 0);
 
+        // まれに外部ゾーンで走る場合があるので明示的に検知させる
+        this.cdr.detectChanges();
+       
+         console.log("📌 todaySales:", this.todaySales);  // ← 追加
       });
   }
 }

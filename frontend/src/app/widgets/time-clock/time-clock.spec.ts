@@ -1,18 +1,17 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TimeClock } from './time-clock';
+import { TimeClockComponent } from './time-clock';
 
 describe('TimeClock', () => {
-  let component: TimeClock;
-  let fixture: ComponentFixture<TimeClock>;
+  let component: TimeClockComponent;
+  let fixture: ComponentFixture<TimeClockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TimeClock]
-    })
-    .compileComponents();
+      imports: [TimeClockComponent, HttpClientTestingModule],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(TimeClock);
+    fixture = TestBed.createComponent(TimeClockComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
